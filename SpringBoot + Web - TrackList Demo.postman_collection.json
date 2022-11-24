@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "7c41ffcf-3070-4a8c-84c5-b4525e45ed1f",
+		"name": "SpringBoot + Web | TrackList Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Tracks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tracks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Track",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 99999,\r\n    \"title\": \"La Source\",\r\n    \"artist\": \"1995\",\r\n    \"albumTitle\": \"La Source\",\r\n    \"genre\": \"Rap & Hip-Hop\",\r\n    \"duration\": 317.306666666667\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/track",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"track"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Track",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/track/99999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"track",
+						"99999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Track",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 88888,\r\n    \"title\": \"Elliot\",\r\n    \"artist\": \"Ambroise\",\r\n    \"albumTitle\": \"Faugier\",\r\n    \"genre\": \"M2 IL\",\r\n    \"duration\": 2022\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/track/99999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"track",
+						"99999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Track Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/track/88888",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"track",
+						"88888"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Track",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/track/88888",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"track",
+						"88888"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

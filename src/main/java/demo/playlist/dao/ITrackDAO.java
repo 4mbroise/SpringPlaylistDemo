@@ -14,8 +14,8 @@ public interface ITrackDAO {
 
     Track findById(int id);
 
-    void update(int id, Track track);
+    Track update(int id, Track track);
 
-    void removeById(int id);
+    Track deleteById(int id);
 
 }
