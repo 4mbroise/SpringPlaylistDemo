@@ -1,43 +1,41 @@
 package demo.playlist.dao;
 
-import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import demo.playlist.model.Track;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Component
 public class TrackDao implements ITrackDAO{
 
-    private List<Track> trackList;
-    private int lastId;
+    private Map<Integer,Track> trackList;
+    //private int lastId;
 
     @Autowired
     public TrackDao(){
-        this.lastId = 1;
-        this.trackList = this.buildTrackList();
+        this.trackList = new HashMap<Integer, Track>();
+        for(Track track:this.buildTrackList()){
+            this.trackList.put(track.getId(), track);
+        }
     }
 
     @Override
-    public void create(Track track) {
-        track.setId(this.lastId+1);
-        this.trackList.add(track);
+    public Track create(Track track) throws HttpClientErrorException {
+        return this.trackList.put(track.getId(), track);
     }
 
     @Override
-    public List<Track> findAll() {
-        return this.trackList;
+    public Collection<Track> findAll() {
+        return this.trackList.values();
     }
 
     @Override
@@ -47,11 +45,13 @@ public class TrackDao implements ITrackDAO{
 
     @Override
     public void update(int id, Track track) {
-        this.trackList.set(id, track);
+        this.removeById(id);
+        this.trackList.put(track.getId(), track);
     }
 
     @Override
     public void removeById(int id) {
+        this.trackList.remove(id);
 
     }
 
@@ -70,11 +70,6 @@ public class TrackDao implements ITrackDAO{
                 .build();
 
         List<Track> trackList = csvToBean.parse();
-
-        for(Track track:trackList){
-            track.setId(this.lastId);
-            this.lastId++;
-        }
 
         return trackList;
     }

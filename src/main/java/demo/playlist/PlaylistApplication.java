@@ -19,6 +19,7 @@ public class PlaylistApplication {
 
 	}
 
+	/*
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext context){
 		return args -> {
@@ -31,6 +32,6 @@ public class PlaylistApplication {
 			}
 
 		};
-	}
+	}*/
 
 }
